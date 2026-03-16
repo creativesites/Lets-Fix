@@ -1,0 +1,1563 @@
+:root {
+    --bg: #f4ecdf;
+    --bg-soft: #fff9f2;
+    --surface: rgba(255, 249, 242, 0.78);
+    --surface-strong: rgba(255, 255, 255, 0.9);
+    --ink: #182231;
+    --muted: #5f6875;
+    --line: rgba(24, 34, 49, 0.12);
+    --brand: #1b3f88;
+    --brand-soft: #dbe8ff;
+    --accent: #cb6d51;
+    --accent-soft: #f4d7ca;
+    --green: #3f7459;
+    --shadow: 0 22px 60px rgba(20, 25, 38, 0.12);
+    --radius-xl: 34px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(circle at top left, rgba(27, 63, 136, 0.12), transparent 28%),
+        radial-gradient(circle at right 18%, rgba(63, 116, 89, 0.12), transparent 24%),
+        linear-gradient(180deg, #fff6ec 0%, var(--bg) 42%, #f7efe4 100%);
+    color: var(--ink);
+    font-family: var(--font-sans), sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+img,
+video {
+    display: block;
+}
+
+.pageShell {
+    position: relative;
+    overflow: clip;
+}
+
+.pageGlow {
+    position: fixed;
+    z-index: -1;
+    width: 34rem;
+    height: 34rem;
+    border-radius: 999px;
+    filter: blur(90px);
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.pageGlowLeft {
+    top: -8rem;
+    left: -10rem;
+    background: rgba(203, 109, 81, 0.28);
+}
+
+.pageGlowRight {
+    top: 12rem;
+    right: -10rem;
+    background: rgba(27, 63, 136, 0.2);
+}
+
+.topbar,
+.section {
+    width: min(1160px, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+/* ── Topbar ──────────────────────────────────────────────── */
+.topbar {
+    position: sticky;
+    top: 1rem;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    background: rgba(255, 248, 240, 0.74);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 16px 30px rgba(18, 23, 33, 0.08);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.brand span:last-child {
+    display: grid;
+    gap: 0.12rem;
+}
+
+.brand small {
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0;
+}
+
+.brandMark {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--brand) 0%, #274d9c 100%);
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.nav {
+    display: inline-flex;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.nav a {
+    transition: color 180ms ease;
+}
+
+.nav a:hover {
+    color: var(--brand);
+}
+
+/* ── Section shell ───────────────────────────────────────── */
+.section {
+    padding: 5.5rem 0;
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(340px, 0.9fr);
+    gap: 3rem;
+    align-items: center;
+    min-height: calc(100vh - 6rem);
+    padding-top: 3rem;
+}
+
+.heroCopy,
+.heroArt,
+.forCard,
+.journeyCard,
+.endorsementCard,
+.voiceCard,
+.authorContent,
+.finalCard,
+.faqItem,
+.ribbonPanel {
+    animation: rise 0.85s ease both;
+}
+
+.eyebrowGroup {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.eyebrow,
+.sectionLabel {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: fit-content;
+    padding: 0.45rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--brand);
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.mutedEyebrow {
+    color: var(--green);
+}
+
+.hero h1,
+.sectionHeading h2,
+.authorContent h2,
+.finalCard h2,
+.ribbonCopy h3 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+}
+
+.hero h1 {
+    max-width: 14ch;
+    font-size: clamp(3.5rem, 9vw, 6.4rem);
+}
+
+.hero h1 span {
+    color: var(--brand);
+}
+
+.lede,
+.sectionHeading p,
+.ribbonCopy p,
+.forCard p,
+.journeyCard p,
+.endorsementCard p,
+.voiceCard p,
+.authorContent p,
+.faqItem p,
+.finalCard p {
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 1.03rem;
+}
+
+.lede {
+    max-width: 60ch;
+    margin: 1.5rem 0 0;
+    font-size: 1.12rem;
+}
+
+.ctaRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    min-height: 3.5rem;
+    padding: 0.95rem 1.35rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-weight: 800;
+    transition:
+        transform 180ms ease,
+        box-shadow 180ms ease,
+        border-color 180ms ease,
+        background 180ms ease;
+}
+
+.button svg {
+    width: 1rem;
+    height: 1rem;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+.buttonPrimary {
+    background: linear-gradient(135deg, var(--brand) 0%, #3158aa 100%);
+    color: #fff;
+    box-shadow: 0 18px 35px rgba(27, 63, 136, 0.24);
+}
+
+.buttonSecondary {
+    border-color: var(--line);
+    background: rgba(255, 255, 255, 0.54);
+}
+
+.buttonSecondary:hover {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.buttonGhost {
+    border-color: rgba(203, 109, 81, 0.28);
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--accent);
+}
+
+.buttonGhost:hover {
+    background: rgba(255, 255, 255, 0.82);
+}
+
+.heroStats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.heroStats div {
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+}
+
+.heroStats strong {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
+}
+
+.heroStats span {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+/* ── Hero Stage ──────────────────────────────────────────── */
+.heroStage {
+    position: relative;
+    min-height: 42rem;
+    padding: 2rem;
+    border-radius: var(--radius-xl);
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.74) 0%, rgba(255, 250, 244, 0.5) 100%),
+        radial-gradient(circle at top right, rgba(63, 116, 89, 0.16), transparent 32%);
+    box-shadow: var(--shadow);
+}
+
+.heroStage::before,
+.heroStage::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+}
+
+.heroStage::before {
+    inset: 3rem auto auto 1.5rem;
+    width: 12rem;
+    height: 12rem;
+    background: rgba(203, 109, 81, 0.12);
+}
+
+.heroStage::after {
+    right: 2rem;
+    bottom: 4rem;
+    width: 10rem;
+    height: 10rem;
+    border: 1px dashed rgba(27, 63, 136, 0.18);
+}
+
+.bookFrame,
+.authorPortrait,
+.ribbonImage,
+.mosaicTall,
+.mosaicWide,
+.mosaicSquare,
+.authorMiniImage {
+    position: relative;
+    overflow: hidden;
+    border-radius: calc(var(--radius-lg) + 4px);
+    box-shadow: 0 20px 42px rgba(18, 22, 34, 0.14);
+}
+
+.coverImage {
+    object-fit: cover;
+}
+
+.largeFrame {
+    position: absolute;
+    inset: 4rem 5rem 7.5rem auto;
+    width: min(20rem, 72%);
+}
+
+.floatingFrame {
+    position: absolute;
+    left: 0;
+    bottom: 3.5rem;
+    width: 14rem;
+    aspect-ratio: 3 / 4;
+    transform: rotate(-9deg);
+}
+
+.quoteCard,
+.authorMiniCard {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: 22px;
+    background: rgba(255, 250, 244, 0.88);
+    backdrop-filter: blur(18px);
+}
+
+.quoteCard {
+    top: 1.4rem;
+    right: 0;
+    max-width: 15rem;
+}
+
+.quoteCard p,
+.authorMiniCard small,
+.authorMiniCard span {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.iconBubble {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.iconBubble svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.authorMiniCard {
+    right: 1rem;
+    bottom: 1rem;
+    grid-template-columns: 4.7rem 1fr;
+    align-items: center;
+    max-width: 19rem;
+}
+
+.authorMiniImage {
+    aspect-ratio: 1 / 1;
+    border-radius: 18px;
+}
+
+.authorMiniCard strong {
+    display: block;
+    margin: 0.2rem 0;
+    font-size: 0.9rem;
+}
+
+/* ── Dedication Band ─────────────────────────────────────── */
+.dedicationBand {
+    background:
+        linear-gradient(135deg, rgba(27, 63, 136, 0.06) 0%, rgba(63, 116, 89, 0.06) 100%);
+    border-top: 1px solid rgba(27, 63, 136, 0.1);
+    border-bottom: 1px solid rgba(27, 63, 136, 0.1);
+    padding: 4rem 1rem;
+}
+
+.dedicationInner {
+    max-width: 52rem;
+    margin-inline: auto;
+    display: grid;
+    gap: 1.25rem;
+    text-align: center;
+}
+
+.dedicationLabel {
+    display: inline-block;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.dedicationQuote {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+}
+
+.dedicationCite {
+    font-style: normal;
+    color: var(--muted);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+/* ── For Section ─────────────────────────────────────────── */
+.sectionHeading {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2.2rem;
+}
+
+.sectionHeading h2,
+.authorContent h2,
+.finalCard h2 {
+    font-size: clamp(2.5rem, 5vw, 4.4rem);
+}
+
+.sectionHeading.narrow {
+    max-width: 52rem;
+}
+
+.splitHeading {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.5fr);
+    align-items: end;
+    gap: 2rem;
+}
+
+.forGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.forCard {
+    padding: 1.6rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.forEyebrow {
+    display: block;
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 0.65rem;
+}
+
+.forCard h3 {
+    margin: 0 0 0.65rem;
+    font-family: var(--font-display), serif;
+    font-size: 1.9rem;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+}
+
+/* ── Ribbon Panel ────────────────────────────────────────── */
+.ribbonPanel {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
+    gap: 1.4rem;
+    align-items: center;
+    margin-top: 1.4rem;
+    padding: 1.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.ribbonCopy {
+    padding: 0.5rem;
+}
+
+.ribbonCopy h3 {
+    margin-top: 0.9rem;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+}
+
+.ribbonImage {
+    aspect-ratio: 1 / 1;
+}
+
+/* ── Journey ─────────────────────────────────────────────── */
+.journeyGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.journeyCard {
+    position: relative;
+    padding: 4.4rem 1.35rem 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.step {
+    position: absolute;
+    top: 1.1rem;
+    left: 1.2rem;
+    color: rgba(27, 63, 136, 0.18);
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: -0.06em;
+}
+
+.chapterScripture {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.journeyCard h3 {
+    margin: 0 0 0.6rem;
+    font-family: var(--font-display), serif;
+    font-size: 1.5rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+/* ── Author Pull Quote ───────────────────────────────────── */
+.authorPullQuote {
+    background: linear-gradient(135deg, var(--accent) 0%, #b85a40 100%);
+    padding: 5rem 1rem;
+}
+
+.pullQuoteInner {
+    max-width: 46rem;
+    margin-inline: auto;
+    display: grid;
+    gap: 1.4rem;
+    text-align: center;
+}
+
+.pullQuoteIcon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    margin-inline: auto;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+.pullQuoteIcon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.pullQuoteInner blockquote {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+
+.pullQuoteInner cite {
+    font-style: normal;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+/* ── Endorsements ────────────────────────────────────────── */
+.endorsementGrid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.endorsementCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 18rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.endorseQuote {
+    margin: 0 0 auto;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 1rem;
+}
+
+.endorseFooter {
+    margin-top: 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+}
+
+.endorseFooter strong {
+    display: block;
+    font-size: 0.95rem;
+}
+
+.endorseFooter span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-top: 0.15rem;
+}
+
+.endorseFooter small {
+    display: block;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+/* ── Media ───────────────────────────────────────────────── */
+.mediaLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.mediaMosaic {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.mosaicTall {
+    grid-row: span 2;
+    min-height: 36rem;
+}
+
+.mosaicWide {
+    min-height: 17.5rem;
+}
+
+.mosaicSquare {
+    min-height: 17.5rem;
+}
+
+.mediaSidebar {
+    display: grid;
+    gap: 1rem;
+}
+
+.videoCard {
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.88);
+    box-shadow: 0 16px 34px rgba(19, 23, 36, 0.08);
+}
+
+.videoCard video {
+    width: 100%;
+    border-radius: 18px;
+    background: #0d1320;
+    object-fit: cover;
+}
+
+.videoCard:first-child video {
+    aspect-ratio: 3 / 4;
+}
+
+.compactVideo video {
+    aspect-ratio: 1 / 1;
+}
+
+.videoCard h3 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: 1.7rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+/* ── Voice Grid ──────────────────────────────────────────── */
+.voiceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.voiceCard {
+    position: relative;
+    padding: 1.6rem 1.35rem 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.voiceNumber {
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+}
+
+.voiceCard h3 {
+    margin: 0 0 0.65rem;
+    font-family: var(--font-display), serif;
+    font-size: 1.5rem;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+}
+
+/* ── Reviews shared styles ───────────────────────────────── */
+.reviewSummary,
+.reviewCard,
+.reviewForm,
+.reviewEmptyState {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.88);
+    box-shadow: 0 16px 34px rgba(19, 23, 36, 0.08);
+}
+
+.reviewSummary {
+    display: grid;
+    justify-items: end;
+    align-content: center;
+    gap: 0.2rem;
+    padding: 1.2rem 1.3rem;
+}
+
+.reviewSummary strong {
+    font-family: var(--font-display), serif;
+    font-size: 3rem;
+    line-height: 0.9;
+}
+
+.reviewSummary span,
+.reviewStars {
+    color: #d98b2b;
+    letter-spacing: 0.08em;
+}
+
+.reviewSummary small,
+.reviewCard small,
+.reviewCard span,
+.formHeading p,
+.formMessage,
+.reviewEmptyState p,
+.reviewNotice {
+    color: var(--muted);
+}
+
+.reviewsLayout {
+    display: grid;
+    grid-template-columns: minmax(320px, 0.88fr) minmax(0, 1.12fr);
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.reviewForm {
+    display: grid;
+    gap: 1rem;
+    padding: 1.4rem;
+    position: sticky;
+    top: 6.5rem;
+}
+
+.formHeading h3,
+.reviewEmptyState h3 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: 2rem;
+}
+
+.formHeading p {
+    margin: 0.35rem 0 0;
+    line-height: 1.7;
+}
+
+.reviewPendingNote {
+    padding: 0.95rem 1rem;
+    border: 1px dashed rgba(27, 63, 136, 0.22);
+    border-radius: 16px;
+    background: rgba(219, 232, 255, 0.3);
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+.field,
+.ratingField {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+}
+
+.field span,
+.ratingField legend {
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.field input,
+.field textarea {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--ink);
+    font: inherit;
+}
+
+.field textarea {
+    resize: vertical;
+    min-height: 9rem;
+}
+
+.field input:focus,
+.field textarea:focus {
+    outline: 2px solid transparent;
+    border-color: rgba(27, 63, 136, 0.4);
+    box-shadow: 0 0 0 4px rgba(27, 63, 136, 0.08);
+}
+
+.ratingField {
+    padding: 0;
+    border: 0;
+}
+
+.ratingChoices {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.ratingChip {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.8rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    font-size: 0.92rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.ratingChip input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.activeRating {
+    border-color: rgba(27, 63, 136, 0.42);
+    background: rgba(219, 232, 255, 0.86);
+    color: var(--brand);
+}
+
+.reviewFormFooter {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.reviewFormFooter .button {
+    width: fit-content;
+}
+
+.formMessage,
+.reviewNotice {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.reviewNotice {
+    padding: 1rem 0;
+}
+
+.reviewEmptyState {
+    padding: 1.4rem;
+}
+
+.reviewList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+}
+
+.reviewCard {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.25rem;
+}
+
+.reviewCardTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.reviewCardTop strong {
+    display: block;
+}
+
+.reviewCardTop span,
+.reviewCardTop small {
+    font-size: 0.9rem;
+}
+
+.reviewCard p {
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.75;
+}
+
+/* ── Admin / Auth ────────────────────────────────────────── */
+.authPage,
+.adminPage {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, rgba(27, 63, 136, 0.12), transparent 30%),
+        linear-gradient(180deg, #fff7ed 0%, #f2eadf 100%);
+}
+
+.authShell,
+.adminHero,
+.adminBoards {
+    width: min(1180px, calc(100% - 2rem));
+    margin-inline: auto;
+}
+
+.authShell {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(340px, 0.8fr);
+    gap: 1.5rem;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.authIntro h1,
+.adminHeroCopy h1,
+.adminEmptyState h1,
+.adminBoardHeader h2 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    letter-spacing: -0.03em;
+}
+
+.authIntro h1,
+.adminHeroCopy h1,
+.adminEmptyState h1 {
+    font-size: clamp(2.8rem, 7vw, 4.8rem);
+    line-height: 0.96;
+}
+
+.authIntro p,
+.adminHeroCopy p,
+.adminEmptyState p,
+.adminNoticeCard p,
+.adminConfigCard small {
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.authCard,
+.adminStatCard,
+.adminNoticeCard,
+.adminReviewCard,
+.adminEmptyColumn,
+.adminEmptyState,
+.adminConfigCard {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.88);
+    box-shadow: 0 16px 34px rgba(19, 23, 36, 0.08);
+}
+
+.authCard {
+    display: grid;
+    justify-items: center;
+    padding: 1.2rem;
+}
+
+.adminHero {
+    padding: 2rem 0 1.5rem;
+}
+
+.adminHeroBar,
+.adminHeroActions,
+.adminReviewTop,
+.adminReviewMeta,
+.adminBoardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.adminHeroCopy {
+    max-width: 48rem;
+    margin-top: 3rem;
+}
+
+.adminStatsGrid,
+.adminNoticeGrid,
+.adminBoards {
+    display: grid;
+    gap: 1rem;
+}
+
+.adminStatsGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 2rem;
+}
+
+.adminStatCard,
+.adminNoticeCard,
+.adminConfigCard,
+.adminEmptyState {
+    padding: 1.25rem;
+}
+
+.adminStatCard strong {
+    display: block;
+    font-family: var(--font-display), serif;
+    font-size: 3rem;
+    line-height: 0.9;
+}
+
+.adminStatCard span {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.adminNoticeGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 1rem;
+}
+
+.adminBoards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    padding-bottom: 5rem;
+}
+
+.adminBoard {
+    display: grid;
+    gap: 1rem;
+}
+
+.adminBoardHeader span,
+.statusPill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2rem;
+    padding: 0.2rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.adminBoardHeader span {
+    background: rgba(255, 255, 255, 0.68);
+    color: var(--brand);
+}
+
+.adminEmptyColumn {
+    padding: 1.15rem;
+    color: var(--muted);
+}
+
+.adminReviewCard {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1.15rem;
+}
+
+.adminReviewTop strong {
+    display: block;
+}
+
+.adminReviewTop span,
+.adminReviewMeta small {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.adminReviewMeta span {
+    color: #d98b2b;
+    letter-spacing: 0.08em;
+}
+
+.adminReviewCard p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.adminReviewActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.adminActionButton {
+    min-height: 2.8rem;
+    padding-inline: 1rem;
+}
+
+.statuspending {
+    background: rgba(219, 232, 255, 0.86);
+    color: var(--brand);
+}
+
+.statusapproved {
+    background: rgba(205, 237, 221, 0.9);
+    color: var(--green);
+}
+
+.statusrejected {
+    background: rgba(244, 215, 202, 0.92);
+    color: var(--accent);
+}
+
+.adminEmptyState {
+    display: grid;
+    gap: 1rem;
+    max-width: 42rem;
+    margin-top: 3rem;
+}
+
+.adminConfigCard {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.adminConfigCard code,
+.adminEmptyState code {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.4rem 0.65rem;
+    border-radius: 12px;
+    background: rgba(27, 63, 136, 0.08);
+    color: var(--brand);
+    font-size: 0.92rem;
+}
+
+/* ── Author ──────────────────────────────────────────────── */
+.authorSection {
+    display: grid;
+    grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1fr);
+    gap: 1.6rem;
+    align-items: center;
+}
+
+.authorPortrait {
+    min-height: 42rem;
+}
+
+.authorBadges {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.6rem;
+}
+
+.authorBadges span {
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.46);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faqList {
+    display: grid;
+    gap: 1rem;
+}
+
+.faqItem {
+    padding: 1.35rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+}
+
+.faqItem summary {
+    cursor: pointer;
+    list-style: none;
+    font-weight: 800;
+    font-size: 1.02rem;
+}
+
+.faqItem summary::-webkit-details-marker {
+    display: none;
+}
+
+.faqItem p {
+    margin-bottom: 0;
+    margin-top: 0.8rem;
+}
+
+/* ── Final CTA ───────────────────────────────────────────── */
+.finalSection {
+    padding-bottom: 7rem;
+}
+
+.finalCard {
+    display: grid;
+    justify-items: start;
+    padding: 2.5rem;
+    border-radius: var(--radius-xl);
+    background:
+        linear-gradient(145deg, rgba(27, 63, 136, 0.92) 0%, rgba(31, 81, 162, 0.9) 100%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.2), transparent 28%);
+    color: #fff;
+}
+
+.finalCard .sectionLabel {
+    background: rgba(255, 255, 255, 0.16);
+    color: #dce7ff;
+}
+
+.finalCard p {
+    color: rgba(255, 255, 255, 0.84);
+    max-width: 44rem;
+}
+
+.finalCard .buttonSecondary {
+    border-color: rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.finalScripture {
+    margin-top: 2rem !important;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.18);
+    font-style: italic;
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.6) !important;
+    width: 100%;
+}
+
+/* ── Animation ───────────────────────────────────────────── */
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1080px) {
+
+    .hero,
+    .splitHeading,
+    .mediaLayout,
+    .authorSection,
+    .ribbonPanel,
+    .reviewsLayout,
+    .authShell {
+        grid-template-columns: 1fr;
+    }
+
+    .forGrid,
+    .journeyGrid,
+    .endorsementGrid,
+    .voiceGrid,
+    .reviewList,
+    .adminStatsGrid,
+    .adminNoticeGrid,
+    .adminBoards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero {
+        min-height: auto;
+    }
+}
+
+@media (max-width: 900px) {
+    .topbar {
+        border-radius: 26px;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .heroStats,
+    .forGrid,
+    .journeyGrid,
+    .endorsementGrid,
+    .voiceGrid,
+    .authorBadges,
+    .mediaMosaic,
+    .reviewList,
+    .adminStatsGrid,
+    .adminNoticeGrid,
+    .adminBoards {
+        grid-template-columns: 1fr;
+    }
+
+    .heroStage {
+        min-height: 35rem;
+        padding: 1.3rem;
+    }
+
+    .largeFrame {
+        inset: 6.5rem 1.5rem 7rem auto;
+        width: 68%;
+    }
+
+    .floatingFrame {
+        left: 1rem;
+        width: 10.5rem;
+    }
+
+    .quoteCard,
+    .authorMiniCard {
+        position: absolute;
+        max-width: calc(100% - 2rem);
+    }
+
+    .quoteCard {
+        left: 1rem;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    .authorMiniCard {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .mosaicTall,
+    .mosaicWide,
+    .mosaicSquare,
+    .authorPortrait {
+        min-height: 26rem;
+    }
+
+    .reviewForm {
+        position: static;
+    }
+
+    .adminHeroBar,
+    .adminHeroActions,
+    .adminBoardHeader,
+    .adminReviewTop,
+    .adminReviewMeta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .topbar,
+    .section {
+        width: min(100% - 1.2rem, 1160px);
+    }
+
+    .section {
+        padding: 4.2rem 0;
+    }
+
+    .hero {
+        gap: 2rem;
+        padding-top: 2rem;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.9rem, 16vw, 4rem);
+    }
+
+    .sectionHeading h2,
+    .authorContent h2,
+    .finalCard h2,
+    .ribbonCopy h3 {
+        font-size: clamp(2.2rem, 12vw, 3.2rem);
+    }
+
+    .forCard h3,
+    .journeyCard h3,
+    .voiceCard h3,
+    .videoCard h3 {
+        font-size: 1.6rem;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+    .heroStats {
+        grid-template-columns: 1fr;
+    }
+
+    .heroStage {
+        min-height: 31rem;
+    }
+
+    .largeFrame {
+        width: 72%;
+        inset: 7.5rem 1rem 7rem auto;
+    }
+
+    .floatingFrame {
+        bottom: 5.4rem;
+        width: 9rem;
+    }
+
+    .dedicationBand {
+        padding: 3rem 1.2rem;
+    }
+
+    .authorPullQuote {
+        padding: 3.5rem 1.2rem;
+    }
+
+    .pullQuoteInner blockquote {
+        font-size: 1.4rem;
+    }
+}
