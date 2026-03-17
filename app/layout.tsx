@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 
+import { GlobalChatbot } from "@/components/global-chatbot";
+
 import "./globals.css";
 
 const display = Cormorant_Garamond({
@@ -38,9 +40,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en-ZM">
       <body className={`${display.variable} ${sans.variable}`}>
-        <ClerkProvider>{children}</ClerkProvider>
+        <ClerkProvider>
+          {children}
+          <GlobalChatbot />
+        </ClerkProvider>
       </body>
     </html>
   );

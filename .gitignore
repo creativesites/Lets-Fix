@@ -8,3 +8,5 @@ coverage/
 .env
 .env.local
 .env.*.local
+.vercel
+data/gemini-book-context.json

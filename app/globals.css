@@ -33,6 +33,8 @@ body {
         linear-gradient(180deg, #fff6ec 0%, var(--bg) 42%, #f7efe4 100%);
     color: var(--ink);
     font-family: var(--font-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
 a {
@@ -48,6 +50,7 @@ video {
 .pageShell {
     position: relative;
     overflow: clip;
+    min-height: 100vh;
 }
 
 .pageGlow {
@@ -97,6 +100,10 @@ video {
     box-shadow: 0 16px 30px rgba(18, 23, 33, 0.08);
 }
 
+.publicTopbar {
+    width: min(1220px, calc(100% - 2rem));
+}
+
 .brand {
     display: inline-flex;
     align-items: center;
@@ -144,9 +151,373 @@ video {
     color: var(--brand);
 }
 
+.topbarButton {
+    min-height: 2.9rem;
+    padding: 0.8rem 1.1rem;
+}
+
 /* ── Section shell ───────────────────────────────────────── */
 .section {
     padding: 5.5rem 0;
+}
+
+.pageIntro {
+    max-width: 58rem;
+}
+
+.pageIntro h1 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: clamp(3rem, 7vw, 5.4rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+}
+
+.pageIntro p {
+    max-width: 46rem;
+    margin: 0;
+}
+
+.sectionActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.siteFooter {
+    padding: 2rem 0 3rem;
+}
+
+.siteFooterInner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 1.5rem;
+    align-items: start;
+    width: min(1220px, calc(100% - 2rem));
+    margin-inline: auto;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: var(--radius-xl);
+    background: rgba(255, 249, 242, 0.76);
+    backdrop-filter: blur(16px);
+}
+
+.siteFooterBrand {
+    display: flex;
+    gap: 1rem;
+}
+
+.siteFooterBrand strong {
+    display: block;
+}
+
+.siteFooterBrand p,
+.siteFooterContact a {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.siteFooterContact {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.siteFooterContact a {
+    font-weight: 700;
+}
+
+.siteFooterContact a:hover {
+    color: var(--brand);
+}
+
+.homeHeroSection {
+    padding-top: 3rem;
+}
+
+.homeHeroGrid,
+.bookPageHero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(320px, 1.08fr);
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.homeHeroCopy,
+.bookPageHeroCopy {
+    animation: rise 0.85s ease both;
+}
+
+.homeHeroCopy h1 {
+    margin: 0;
+    max-width: 11ch;
+    font-family: var(--font-display), serif;
+    font-size: clamp(3.7rem, 8vw, 6.3rem);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+}
+
+.homeHeroCopy h1 span {
+    color: var(--brand);
+}
+
+.homeHeroVisual {
+    position: relative;
+    min-height: 44rem;
+    padding: 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.68);
+    border-radius: calc(var(--radius-xl) + 4px);
+    background: rgba(255, 249, 242, 0.58);
+    box-shadow: var(--shadow);
+}
+
+.homeHeroBackdrop,
+.homeHeroBookAccent,
+.homeHeroCardImage,
+.galleryPreviewFigure,
+.bookPageHeroImage,
+.bookShowcaseCard,
+.quoteWallImage,
+.fullGalleryCard,
+.homeQuoteImageCard {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.homeHeroBackdrop {
+    position: absolute;
+    inset: 1.1rem;
+    border-radius: calc(var(--radius-xl) + 2px);
+}
+
+.homeHeroBackdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(16, 23, 38, 0.08) 0%, rgba(16, 23, 38, 0.42) 100%),
+        radial-gradient(circle at top right, rgba(255, 246, 229, 0.28), transparent 22%);
+}
+
+.homeHeroOverlay {
+    position: absolute;
+    left: 1.8rem;
+    right: 1.8rem;
+    bottom: 1.8rem;
+    display: grid;
+    grid-template-columns: 12rem minmax(0, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 250, 245, 0.72);
+    backdrop-filter: blur(16px);
+}
+
+.homeHeroCardImage {
+    min-height: 15rem;
+}
+
+.homeHeroOverlayCopy h2,
+.bookPageHeroCopy h2 {
+    margin: 0.6rem 0 0.4rem;
+    font-family: var(--font-display), serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 0.98;
+    letter-spacing: -0.03em;
+}
+
+.homeHeroOverlayCopy p,
+.bookPageHeroCopy p,
+.galleryPreviewCopy span {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.bookPageHeroCopy {
+    padding: 1.4rem 0;
+}
+
+.homeHeroBookAccent {
+    position: absolute;
+    top: 1.8rem;
+    right: 1.8rem;
+    width: min(18rem, 38%);
+    aspect-ratio: 1 / 0.68;
+    transform: rotate(3deg);
+    border: 8px solid rgba(255, 252, 248, 0.82);
+}
+
+.homeHeroStats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.homeHeroStats div {
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: var(--radius-md);
+    background: var(--surface);
+    backdrop-filter: blur(12px);
+}
+
+.homeHeroStats strong {
+    display: block;
+    margin-bottom: 0.35rem;
+}
+
+.homeHeroStats span {
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.homeQuoteLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.homeQuoteImages,
+.homeQuoteTextGrid,
+.galleryPreviewGrid,
+.bookShowcaseGrid,
+.quoteWallGrid,
+.quoteTextWall,
+.fullGalleryGrid,
+.reviewTeaserGrid {
+    display: grid;
+    gap: 1rem;
+}
+
+.homeQuoteImages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: end;
+}
+
+.homeQuoteImageCard {
+    min-height: 18rem;
+    box-shadow: 0 18px 38px rgba(19, 23, 36, 0.1);
+}
+
+.homeQuoteImageCard:nth-child(2) {
+    transform: translateY(2.2rem);
+}
+
+.homeQuoteImageCard:nth-child(3) {
+    transform: translateY(4rem);
+}
+
+.homeQuoteTextGrid {
+    align-content: start;
+}
+
+.galleryPreviewGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.galleryPreviewCard,
+.bookPageHeroImage,
+.bookShowcaseCard,
+.quoteWallImage,
+.fullGalleryCard {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.88);
+    box-shadow: 0 16px 34px rgba(19, 23, 36, 0.08);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease;
+}
+
+.galleryPreviewCard:hover,
+.bookShowcaseCard:hover,
+.quoteWallImage:hover,
+.fullGalleryCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba(19, 23, 36, 0.14);
+    border-color: rgba(27, 63, 136, 0.2);
+}
+
+.galleryPreviewFigure {
+    min-height: 18rem;
+}
+
+.galleryPreviewCard {
+    overflow: hidden;
+}
+
+.galleryPreviewCopy {
+    padding: 1rem 1rem 1.1rem;
+}
+
+.galleryPreviewCopy span {
+    font-weight: 800;
+}
+
+.bookPageHeroImage {
+    min-height: 32rem;
+}
+
+.bookShowcaseGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.bookShowcaseCard {
+    min-height: 16rem;
+}
+
+.quoteWallGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.quoteWallImage {
+    min-height: 20rem;
+}
+
+.quoteTextWall {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gallerySectionBlock {
+    padding-top: 0;
+}
+
+.gallerySectionBlock .sectionHeading {
+    margin-bottom: 1.25rem;
+}
+
+.fullGalleryGrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-flow: dense;
+}
+
+.fullGalleryCard {
+    min-height: 18rem;
+}
+
+.fullGalleryCard:nth-child(5n + 1) {
+    grid-column: span 2;
+    min-height: 24rem;
+}
+
+.fullGalleryCard:nth-child(7n + 3) {
+    min-height: 22rem;
+}
+
+.reviewTeaserGrid .reviewCard,
+.reviewTeaserGrid .reviewEmptyState {
+    min-height: 100%;
+}
+
+.reviewTeaserGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 /* ── Hero ────────────────────────────────────────────────── */
@@ -727,69 +1098,103 @@ video {
     margin-top: 0.3rem;
 }
 
-/* ── Media ───────────────────────────────────────────────── */
-.mediaLayout {
+/* ── Gallery ─────────────────────────────────────────────── */
+.galleryShowcase {
     display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
     gap: 1.2rem;
     align-items: start;
 }
 
-.mediaMosaic {
+.galleryStoryPane {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1.02fr) minmax(220px, 0.62fr);
     gap: 1rem;
+    align-items: stretch;
 }
 
-.mosaicTall {
-    grid-row: span 2;
-    min-height: 36rem;
-}
-
-.mosaicWide {
-    min-height: 17.5rem;
-}
-
-.mosaicSquare {
-    min-height: 17.5rem;
-}
-
-.mediaSidebar {
+.galleryStoryStack,
+.galleryProductGrid {
     display: grid;
     gap: 1rem;
 }
 
-.videoCard {
-    display: grid;
-    gap: 1rem;
-    padding: 1rem;
+.galleryFrame,
+.galleryStripCard,
+.galleryCaptionCard {
     border: 1px solid rgba(255, 255, 255, 0.72);
     border-radius: var(--radius-lg);
     background: rgba(255, 249, 242, 0.88);
     box-shadow: 0 16px 34px rgba(19, 23, 36, 0.08);
 }
 
-.videoCard video {
-    width: 100%;
-    border-radius: 18px;
-    background: #0d1320;
-    object-fit: cover;
+.galleryFrame,
+.galleryStripCard {
+    position: relative;
+    overflow: hidden;
 }
 
-.videoCard:first-child video {
-    aspect-ratio: 3 / 4;
+.galleryLeadFrame {
+    min-height: 36rem;
 }
 
-.compactVideo video {
-    aspect-ratio: 1 / 1;
+.galleryTallFrame {
+    min-height: 22rem;
 }
 
-.videoCard h3 {
-    margin: 0;
+.galleryCaptionCard {
+    display: grid;
+    align-content: end;
+    padding: 1.25rem;
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 247, 239, 0.88) 100%),
+        radial-gradient(circle at top right, rgba(27, 63, 136, 0.08), transparent 34%);
+}
+
+.galleryCaptionCard h3 {
+    margin: 0.8rem 0 0.4rem;
     font-family: var(--font-display), serif;
-    font-size: 1.7rem;
-    line-height: 1.05;
-    letter-spacing: -0.02em;
+    font-size: 2rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.galleryCaptionCard p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.galleryProductGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.galleryPortraitFrame {
+    min-height: 18rem;
+}
+
+.galleryBookFrame {
+    min-height: 14rem;
+}
+
+.galleryReaderWide {
+    grid-column: span 2;
+    min-height: 18rem;
+}
+
+.galleryReaderSquare {
+    min-height: 18rem;
+}
+
+.galleryCommunityStrip {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.galleryStripCard {
+    min-height: 13rem;
 }
 
 /* ── Voice Grid ──────────────────────────────────────────── */
@@ -808,6 +1213,23 @@ video {
     background: var(--surface);
     backdrop-filter: blur(14px);
     box-shadow: 0 12px 30px rgba(19, 23, 36, 0.06);
+    transition:
+        transform 220ms ease,
+        box-shadow 220ms ease,
+        border-color 220ms ease,
+        background 220ms ease;
+}
+
+.voiceCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(19, 23, 36, 0.12);
+    border-color: rgba(27, 63, 136, 0.2);
+}
+
+.quoteTextWall .voiceCard:nth-child(2) {
+    background:
+        linear-gradient(160deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 244, 255, 0.86) 100%),
+        radial-gradient(circle at top right, rgba(112, 91, 173, 0.08), transparent 36%);
 }
 
 .voiceNumber {
@@ -1039,6 +1461,860 @@ video {
     line-height: 1.75;
 }
 
+/* ── Advice Studio ──────────────────────────────────────── */
+.adviceStudioSection {
+    padding-top: 1rem;
+}
+
+.adviceStudioLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.52fr);
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.adviceConversationPanel,
+.adviceSidebarCard,
+.adviceEmptyState,
+.adviceMessageBubble {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.84);
+    box-shadow: 0 18px 40px rgba(19, 23, 36, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.adviceConversationPanel {
+    display: grid;
+    gap: 1rem;
+    padding: 1.1rem;
+}
+
+.advicePanelHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.advicePillRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+}
+
+.advicePanelHeader h2,
+.adviceSidebarCard h3,
+.advisorCard h3,
+.adviceEmptyState h3 {
+    margin: 0.55rem 0 0;
+    font-family: var(--font-display), serif;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.advicePanelHeader h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.adviceMiniButton {
+    min-height: 2.9rem;
+    white-space: nowrap;
+}
+
+.adviceHeaderActions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.adviceHeaderSelect {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.adviceHeaderSelect span {
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.adviceHeaderSelect select {
+    min-height: 2.85rem;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid rgba(27, 63, 136, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.82);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.92rem;
+}
+
+.adviceIconButton {
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border: 1px solid rgba(27, 63, 136, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--brand);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.advicePromptRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.adviceModeSwitch {
+    display: inline-flex;
+    gap: 0.5rem;
+    padding: 0.35rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.54);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+    width: fit-content;
+}
+
+.adviceModeButton {
+    min-height: 2.45rem;
+    padding: 0.65rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.activeAdviceMode {
+    background: rgba(27, 63, 136, 0.12);
+    color: var(--brand);
+}
+
+.advicePromptChip {
+    min-height: 2.9rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(27, 63, 136, 0.12);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--ink);
+    font: inherit;
+    font-size: 0.94rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        transform 180ms ease,
+        border-color 180ms ease,
+        box-shadow 180ms ease;
+}
+
+.advicePromptChip:hover {
+    transform: translateY(-2px);
+    border-color: rgba(27, 63, 136, 0.28);
+    box-shadow: 0 12px 22px rgba(27, 63, 136, 0.08);
+}
+
+.adviceTranscript {
+    display: grid;
+    gap: 1rem;
+    min-height: 24rem;
+    max-height: 62rem;
+    overflow-y: auto;
+    padding-right: 0.2rem;
+}
+
+.adviceEmptyState {
+    padding: 1.6rem;
+}
+
+.adviceEmptyState p,
+.adviceSidebarCard p,
+.advisorCard p,
+.advisorList,
+.advisorOrderedList,
+.adviceMessageBubble p,
+.adviceComposerField span,
+.adviceSidebarNote {
+    color: var(--muted);
+    line-height: 1.75;
+}
+
+.adviceMessage {
+    display: flex;
+}
+
+.adviceMessage-user {
+    justify-content: flex-end;
+}
+
+.adviceMessage-assistant {
+    justify-content: flex-start;
+}
+
+.adviceMessageBubble {
+    width: min(100%, 44rem);
+    padding: 1rem;
+}
+
+.adviceMessage-user .adviceMessageBubble {
+    background:
+        linear-gradient(145deg, rgba(27, 63, 136, 0.9) 0%, rgba(45, 84, 158, 0.88) 100%),
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.16), transparent 34%);
+    color: #fff;
+}
+
+.adviceMessage-user .adviceMessageBubble p,
+.adviceMessage-user .adviceMessageMeta strong {
+    color: #fff;
+}
+
+.adviceMessageMeta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+}
+
+.adviceSpeakButton {
+    border: 0;
+    background: transparent;
+    color: var(--brand);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.advisorComponentStack {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.advisorToolsStack {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 0.2rem;
+}
+
+.advisorToolsHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.advisorToolsHeader small {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.adviceSuggestionRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem;
+    margin-top: 0.15rem;
+}
+
+.adviceSuggestionChip {
+    min-height: 2.35rem;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid rgba(27, 63, 136, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.76);
+    color: var(--brand);
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.adviceReplyText {
+    margin: 0;
+    color: var(--ink) !important;
+    font-size: 1rem;
+    line-height: 1.85 !important;
+}
+
+.advisorCard {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem;
+    border-radius: calc(var(--radius-md) + 2px);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 247, 240, 0.82) 100%),
+        radial-gradient(circle at top right, rgba(27, 63, 136, 0.06), transparent 36%);
+}
+
+.advisorHeroCard,
+.advisorPrayerCard,
+.advisorScriptureCard,
+.advisorAlertCard {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.42);
+}
+
+.advisorQuoteCard blockquote {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: clamp(1.3rem, 2vw, 1.8rem);
+    line-height: 1.22;
+    letter-spacing: -0.02em;
+}
+
+.advisorQuoteCard span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.advisorMiniLabel {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.28rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(27, 63, 136, 0.08);
+    color: var(--brand);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.advisorVerse {
+    font-family: var(--font-display), serif;
+    font-size: 1.18rem;
+    color: var(--ink) !important;
+}
+
+.advisorList,
+.advisorOrderedList {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+.advisorScriptBox {
+    padding: 0.95rem 1rem;
+    border-radius: 18px;
+    background: rgba(27, 63, 136, 0.05);
+    border: 1px dashed rgba(27, 63, 136, 0.18);
+    color: var(--ink);
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.advisorStackList {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.advisorStackItem {
+    padding: 0.85rem 0.95rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+    line-height: 1.7;
+}
+
+.advisorTimerBox {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.advisorTimerBox strong {
+    font-family: var(--font-display), serif;
+    font-size: 2.1rem;
+    line-height: 1;
+}
+
+.advisorTimerActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.adviceInlineButton {
+    min-height: 2.4rem;
+    padding: 0.55rem 0.9rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(27, 63, 136, 0.12);
+    color: var(--brand);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.subtleInlineButton {
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--muted);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+}
+
+.tone-warm {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 244, 235, 0.86) 100%),
+        radial-gradient(circle at top right, rgba(203, 109, 81, 0.08), transparent 34%);
+}
+
+.tone-calm {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(239, 247, 255, 0.86) 100%),
+        radial-gradient(circle at top right, rgba(27, 63, 136, 0.08), transparent 34%);
+}
+
+.tone-hopeful {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(242, 251, 244, 0.86) 100%),
+        radial-gradient(circle at top right, rgba(63, 116, 89, 0.08), transparent 34%);
+}
+
+.tone-alert {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 247, 236, 0.9) 100%),
+        radial-gradient(circle at top right, rgba(217, 139, 43, 0.12), transparent 32%);
+    border-color: rgba(217, 139, 43, 0.18);
+}
+
+.adviceLoadingBubble {
+    border-style: dashed;
+}
+
+.adviceComposer {
+    display: grid;
+    gap: 0.9rem;
+    padding: 0.25rem 0 0.1rem;
+}
+
+.adviceComposerField {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.adviceComposerField span {
+    font-size: 0.92rem;
+    font-weight: 800;
+}
+
+.adviceField input,
+.adviceField select,
+.adviceHeaderSelect select {
+    width: 100%;
+    color: var(--ink);
+    font: inherit;
+}
+
+.adviceComposerField textarea,
+.adviceField input,
+.adviceField select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+}
+
+.adviceComposerField textarea {
+    min-height: 9rem;
+    resize: vertical;
+}
+
+.adviceComposerField textarea:focus,
+.adviceField input:focus,
+.adviceField select:focus,
+.adviceHeaderSelect select:focus {
+    outline: 2px solid transparent;
+    border-color: rgba(27, 63, 136, 0.38);
+    box-shadow: 0 0 0 4px rgba(27, 63, 136, 0.08);
+}
+
+.adviceComposerActions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+}
+
+.adviceMicButton[disabled] {
+    opacity: 0.55;
+}
+
+.adviceSidebar {
+    display: grid;
+    gap: 1rem;
+}
+
+.adviceSidebarCard {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1.2rem;
+}
+
+.adviceProfileForm {
+    display: grid;
+    gap: 1rem;
+}
+
+.adviceProfileGrid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+}
+
+.adviceField {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.adviceField span {
+    color: var(--muted);
+    font-size: 0.83rem;
+    font-weight: 800;
+}
+
+.adviceFieldFull {
+    grid-column: 1 / -1;
+}
+
+.adviceSessionList {
+    display: grid;
+    gap: 0.7rem;
+}
+
+.adviceSessionItem {
+    display: grid;
+    gap: 0.2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(27, 63, 136, 0.08);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--ink);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+}
+
+.adviceSessionItem strong {
+    font-size: 0.94rem;
+}
+
+.adviceSessionItem span {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.activeAdviceSessionItem {
+    border-color: rgba(27, 63, 136, 0.24);
+    box-shadow: 0 10px 18px rgba(27, 63, 136, 0.08);
+    background: rgba(239, 247, 255, 0.86);
+}
+
+.adviceSidebarAccent {
+    background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.88) 0%, rgba(237, 246, 255, 0.82) 100%),
+        radial-gradient(circle at top right, rgba(27, 63, 136, 0.1), transparent 34%);
+}
+
+.adviceSidebarFacts {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.adviceFactRow {
+    display: grid;
+    gap: 0.15rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+}
+
+.adviceFactRow span {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.adviceFactRow strong {
+    font-size: 0.96rem;
+}
+
+.globalChatbotShell {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 50;
+}
+
+.globalChatbotPanel {
+    width: min(28rem, calc(100vw - 1.4rem));
+}
+
+.globalChatbotLauncher {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 3.65rem;
+    padding: 0.95rem 1.2rem;
+    border: 0;
+    border-radius: 999px;
+    background:
+        linear-gradient(135deg, var(--brand) 0%, #3158aa 100%);
+    color: #fff;
+    box-shadow: 0 18px 36px rgba(27, 63, 136, 0.28);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.globalChatbotPulse {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 999px;
+    background: #fff2c5;
+    box-shadow: 0 0 0 0 rgba(255, 242, 197, 0.7);
+    animation: pulseGlow 1.8s infinite;
+}
+
+.adviceConversationPanelWidget {
+    padding: 1rem;
+}
+
+.adviceConversationPanelWidget .advicePanelHeader h2 {
+    font-size: clamp(1.55rem, 4vw, 2rem);
+}
+
+.advicePromptRowWidget .advicePromptChip {
+    font-size: 0.82rem;
+    padding: 0.7rem 0.8rem;
+}
+
+.adviceTranscriptWidget {
+    min-height: 17rem;
+    max-height: 26rem;
+}
+
+/* ── Devotionals ────────────────────────────────────────── */
+.devotionalHubSection,
+.devotionalDetailSection {
+    padding-top: 1rem;
+}
+
+.devotionalSpotlight,
+.devotionalDetailLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.02fr) minmax(280px, 0.74fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+.devotionalSpotlight,
+.devotionalArchiveCard,
+.bibleVerseCard,
+.bibleSearchField,
+.devotionalDetailCopy,
+.devotionalSpotlightMedia {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.86);
+    box-shadow: 0 18px 40px rgba(19, 23, 36, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.devotionalSpotlight {
+    padding: 1.2rem;
+}
+
+.devotionalSpotlightCopy,
+.devotionalDetailCopy,
+.devotionalSpotlightMedia,
+.devotionalDetailSidebar,
+.bibleQuickAccess {
+    display: grid;
+    gap: 1rem;
+}
+
+.devotionalSpotlight h2,
+.devotionalDetailCopy h1,
+.bibleVerseCard h3 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.devotionalDetailCopy {
+    padding: 1.25rem;
+}
+
+.devotionalDetailCopy h1 {
+    font-size: clamp(3rem, 5vw, 4.4rem);
+}
+
+.devotionalVerseCallout,
+.devotionalActionCard,
+.devotionalAudioCard {
+    display: grid;
+    gap: 0.6rem;
+    padding: 1rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(27, 63, 136, 0.08);
+}
+
+.devotionalVerseCallout strong,
+.devotionalArchiveMeta strong {
+    font-family: var(--font-display), serif;
+    font-size: 1.3rem;
+}
+
+.devotionalContentBlock {
+    display: grid;
+    gap: 0.65rem;
+}
+
+.devotionalContentBlock h2,
+.devotionalContentBlock h3 {
+    margin: 0;
+    font-family: var(--font-display), serif;
+    font-size: 1.8rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+}
+
+.devotionalSpotlightMedia {
+    padding: 1rem;
+}
+
+.devotionalMediaFrame,
+.devotionalMediaFrame img,
+.devotionalMediaFrame video {
+    width: 100%;
+}
+
+.devotionalMediaFrame {
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(18, 23, 33, 0.9);
+}
+
+.devotionalMediaFrame img,
+.devotionalMediaFrame video {
+    display: block;
+    max-height: 34rem;
+    object-fit: cover;
+}
+
+.devotionalMediaLink {
+    display: flex;
+}
+
+.devotionalSpotlightMeta,
+.devotionalArchiveMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    color: var(--muted);
+}
+
+.devotionalArchiveGrid,
+.bibleVerseGrid {
+    display: grid;
+    gap: 1rem;
+}
+
+.devotionalArchiveGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.devotionalArchiveCard {
+    display: grid;
+    gap: 0.85rem;
+    padding: 1.1rem;
+}
+
+.bibleSearchField {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1rem;
+}
+
+.bibleSearchField span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.bibleSearchField input,
+.adviceField textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.72);
+    color: var(--ink);
+    font: inherit;
+}
+
+.bibleSearchField input:focus,
+.adviceField textarea:focus {
+    outline: 2px solid transparent;
+    border-color: rgba(27, 63, 136, 0.38);
+    box-shadow: 0 0 0 4px rgba(27, 63, 136, 0.08);
+}
+
+.bibleVerseGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.bibleVerseCard {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1rem;
+}
+
+.bibleVerseCard p {
+    color: var(--muted);
+    line-height: 1.75;
+    margin: 0;
+}
+
+.adminDevotionalLayout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.2rem;
+    align-items: start;
+}
+
+.adminDevotionalForm,
+.adminDevotionalList {
+    display: grid;
+    gap: 1rem;
+    padding: 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 249, 242, 0.84);
+    box-shadow: 0 18px 40px rgba(19, 23, 36, 0.08);
+}
+
+.adminDevotionalCard {
+    gap: 1rem;
+}
+
 /* ── Admin / Auth ────────────────────────────────────────── */
 .authPage,
 .adminPage {
@@ -1250,6 +2526,21 @@ video {
     color: var(--accent);
 }
 
+.statusdraft {
+    background: rgba(236, 234, 255, 0.92);
+    color: #5d4ab2;
+}
+
+.statusscheduled {
+    background: rgba(255, 239, 212, 0.92);
+    color: #b06d15;
+}
+
+.statuspublished {
+    background: rgba(205, 237, 221, 0.9);
+    color: var(--green);
+}
+
 .adminEmptyState {
     display: grid;
     gap: 1rem;
@@ -1387,16 +2678,38 @@ video {
     }
 }
 
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 242, 197, 0.65);
+    }
+
+    70% {
+        box-shadow: 0 0 0 12px rgba(255, 242, 197, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 242, 197, 0);
+    }
+}
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 1080px) {
 
     .hero,
+    .homeHeroGrid,
+    .bookPageHero,
+    .devotionalSpotlight,
+    .devotionalDetailLayout,
+    .homeQuoteLayout,
     .splitHeading,
-    .mediaLayout,
+    .galleryShowcase,
+    .galleryStoryPane,
     .authorSection,
     .ribbonPanel,
     .reviewsLayout,
-    .authShell {
+    .authShell,
+    .adviceStudioLayout,
+    .siteFooterInner {
         grid-template-columns: 1fr;
     }
 
@@ -1404,15 +2717,33 @@ video {
     .journeyGrid,
     .endorsementGrid,
     .voiceGrid,
+    .galleryPreviewGrid,
+    .bookShowcaseGrid,
+    .quoteWallGrid,
+    .quoteTextWall,
+    .devotionalArchiveGrid,
+    .bibleVerseGrid,
+    .fullGalleryGrid,
+    .reviewTeaserGrid,
     .reviewList,
     .adminStatsGrid,
     .adminNoticeGrid,
-    .adminBoards {
+    .adminBoards,
+    .galleryCommunityStrip {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .hero {
         min-height: auto;
+    }
+
+    .homeHeroVisual {
+        min-height: 38rem;
+    }
+
+    .fullGalleryCard:nth-child(5n + 1) {
+        grid-column: span 1;
+        min-height: 20rem;
     }
 }
 
@@ -1426,16 +2757,25 @@ video {
     }
 
     .heroStats,
+    .homeHeroStats,
     .forGrid,
     .journeyGrid,
     .endorsementGrid,
     .voiceGrid,
+    .adminDevotionalLayout,
     .authorBadges,
-    .mediaMosaic,
+    .galleryPreviewGrid,
+    .bookShowcaseGrid,
+    .quoteWallGrid,
+    .quoteTextWall,
+    .fullGalleryGrid,
+    .reviewTeaserGrid,
     .reviewList,
     .adminStatsGrid,
     .adminNoticeGrid,
-    .adminBoards {
+    .adminBoards,
+    .galleryProductGrid,
+    .galleryCommunityStrip {
         grid-template-columns: 1fr;
     }
 
@@ -1472,11 +2812,50 @@ video {
         bottom: 1rem;
     }
 
-    .mosaicTall,
-    .mosaicWide,
-    .mosaicSquare,
-    .authorPortrait {
+    .homeHeroSection {
+        padding-top: 2rem;
+    }
+
+    .homeHeroCopy h1 {
+        max-width: 12ch;
+        font-size: clamp(3rem, 13vw, 5rem);
+    }
+
+    .homeHeroOverlay {
+        grid-template-columns: 1fr;
+    }
+
+    .homeHeroCardImage {
+        min-height: 13rem;
+    }
+
+    .homeHeroBookAccent {
+        width: min(12rem, 42%);
+    }
+
+    .homeQuoteImages {
+        grid-template-columns: 1fr;
+    }
+
+    .homeQuoteImageCard:nth-child(2),
+    .homeQuoteImageCard:nth-child(3) {
+        transform: none;
+    }
+
+    .galleryLeadFrame,
+    .galleryTallFrame,
+    .galleryPortraitFrame,
+    .galleryBookFrame,
+    .galleryReaderWide,
+    .galleryReaderSquare,
+    .authorPortrait,
+    .homeHeroBackdrop,
+    .bookPageHeroImage {
         min-height: 26rem;
+    }
+
+    .galleryReaderWide {
+        grid-column: span 1;
     }
 
     .reviewForm {
@@ -1487,9 +2866,18 @@ video {
     .adminHeroActions,
     .adminBoardHeader,
     .adminReviewTop,
-    .adminReviewMeta {
+    .adminReviewMeta,
+    .advicePanelHeader {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .adviceTranscript {
+        max-height: none;
+    }
+
+    .adviceProfileGrid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1513,17 +2901,22 @@ video {
         font-size: clamp(2.9rem, 16vw, 4rem);
     }
 
+    .homeHeroCopy h1,
+    .pageIntro h1 {
+        font-size: clamp(2.7rem, 15vw, 4rem);
+    }
+
     .sectionHeading h2,
     .authorContent h2,
     .finalCard h2,
-    .ribbonCopy h3 {
+    .ribbonCopy h3,
+    .galleryCaptionCard h3 {
         font-size: clamp(2.2rem, 12vw, 3.2rem);
     }
 
     .forCard h3,
     .journeyCard h3,
-    .voiceCard h3,
-    .videoCard h3 {
+    .voiceCard h3 {
         font-size: 1.6rem;
     }
 
@@ -1531,8 +2924,38 @@ video {
         width: 100%;
     }
 
+    .adviceComposerActions {
+        grid-template-columns: 1fr;
+        display: grid;
+    }
+
     .heroStats {
         grid-template-columns: 1fr;
+    }
+
+    .homeHeroVisual {
+        min-height: 32rem;
+        padding: 0.8rem;
+    }
+
+    .homeHeroBackdrop {
+        inset: 0.8rem;
+    }
+
+    .homeHeroOverlay {
+        left: 1rem;
+        right: 1rem;
+        bottom: 1rem;
+    }
+
+    .homeHeroBookAccent {
+        top: 1rem;
+        right: 1rem;
+        width: 7.5rem;
+    }
+
+    .bookPageHeroCopy {
+        padding: 0;
     }
 
     .heroStage {
@@ -1549,6 +2972,10 @@ video {
         width: 9rem;
     }
 
+    .galleryStripCard {
+        min-height: 18rem;
+    }
+
     .dedicationBand {
         padding: 3rem 1.2rem;
     }
@@ -1559,5 +2986,9 @@ video {
 
     .pullQuoteInner blockquote {
         font-size: 1.4rem;
+    }
+
+    .siteFooterInner {
+        padding: 1.2rem;
     }
 }
